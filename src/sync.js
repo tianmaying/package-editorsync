@@ -753,8 +753,9 @@ var FileSync = Class.extend({
     /*
      *  Bind sync with editor
      */
-    bindEditor: function(editor) {
+    bindEditor: function(editorObject) {
         var sync = this;
+        var editor = editorObject.editor;
 
         // Lock on editor changement
         sync._op_set = false;
