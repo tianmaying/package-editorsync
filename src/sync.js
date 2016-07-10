@@ -320,6 +320,7 @@ var FileSync = Class.extend({
                 self.setSyncState(false);
             });
             socket.on('data', function(data) {
+                console.log('socket data = ', data);
                 if (!self.isSync()) return;
 
                 logging.log("socket receive packet ", data);
