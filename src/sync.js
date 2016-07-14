@@ -154,8 +154,12 @@ var FileSync = Class.extend({
         // Stop sync and update content
         this.sync = false;
 
+        console.log('content_value_t0 = ', this.content_value_t0);
+
         // Calcul patches
         var patches = this.diff.patch_make(this.content_value_t0, content);
+
+        console.log('patch = ', patches);
 
         // Calcul new hash
         this.hash_value_t1 = _hash(content);
@@ -267,6 +271,8 @@ var FileSync = Class.extend({
      */
     setFile: function(file, options) {
         var self = this;
+
+        console.log('set file = ', file);
 
         options = _.defaults({}, options || {}, {
             sync: true,
@@ -762,6 +768,7 @@ var FileSync = Class.extend({
 
         // Lock on editor changement
         sync._op_set = false;
+        sync.content_value_t0 = editor.getContent();
 
         sync.on("update:env", function(options) {
             if (options.reset) {
@@ -798,7 +805,6 @@ var FileSync = Class.extend({
         // Bind changement from backend -> editor
         sync.on("content", function(content, oldcontent, patches) {
             var selection, cursor_lead, cursor_anchor, scroll_y, operations;
-
             // if resync patches is null
             patches = patches || [];
 
@@ -841,8 +847,6 @@ var FileSync = Class.extend({
 
             // Check document content is as expected
             if (editor.getDocContent() != content) {
-                logging.error("editor content = ", editor.getDocContent());
-                logging.error("content = ", content);
                 logging.error("Invalid operation ", content.length, editor.getDocContent().length);
                 editor.setDocContent(content);
                 sync.sendSync();
