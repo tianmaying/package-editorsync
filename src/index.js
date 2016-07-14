@@ -16,7 +16,7 @@ commands.register({
             return;
         }
 
-        editor.sync = new FileSync();
+        editor.sync = new FileSync(codebox.workspace.id);
         editor.sync.bindEditor(editor)
         .fail(dialogs.error);
     }

@@ -21,7 +21,7 @@ var FileSync = Class.extend({
     },
 
     // Constructor
-    initialize: function() {
+    initialize: function(workspace) {
         FileSync.__super__.initialize.apply(this, arguments);
 
         // Diff/Patch calculoator
@@ -36,6 +36,9 @@ var FileSync = Class.extend({
 
         // File model for this sync
         this.file = null;
+
+        //Workspace id
+        this.workspace = workspace;
 
         // Environment id used for sync
         this.envId = null;
@@ -292,7 +295,7 @@ var FileSync = Class.extend({
 
         // Environment session
         this.envOptions = options
-        this.envId = this.file.get("path");
+        this.envId = this.workspace + '#' + this.file.get("path");
 
         this.content_value_t0 = this.content_value_t0 || "";
         this.content_value_t1 = this.content_value_t1 || "";
