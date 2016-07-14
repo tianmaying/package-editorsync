@@ -841,6 +841,8 @@ var FileSync = Class.extend({
 
             // Check document content is as expected
             if (editor.getDocContent() != content) {
+                logging.error("editor content = ", editor.getDocContent());
+                logging.error("content = ", content);
                 logging.error("Invalid operation ", content.length, editor.getDocContent().length);
                 editor.setDocContent(content);
                 sync.sendSync();
