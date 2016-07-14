@@ -636,8 +636,7 @@ var FileSync = Class.extend({
                 'token': user.get("token"),
                 'environment': this.envId
             });
-
-            //logging.log("send packet", data);
+            logging.log("send packet", data);
             this.socket().then(function(socket) {
                 socket.send(data);
             })
