@@ -8,7 +8,9 @@
         "codebox": ">=1.0.0-alpha"
     },
     "packageDependencies": {
-        "editor": "tianmaying/package-editor"
+        "editor": "tianmaying/package-editor",
+        "menubar": "tianmaying/package-menubar",
+        "statusbar": "tianmaying/package-statusbar"
     },
     "dependencies": {
         "q": "1.0.1",
