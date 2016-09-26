@@ -21,3 +21,11 @@ commands.register({
         .fail(dialogs.error);
     }
 });
+
+// Add to View menu
+if (codebox.menubar) {
+    codebox.menubar.createMenu("view", {
+        caption: "打开/关闭协作功能",
+        command: "editor.collaboration.toggle"
+    });
+}
